@@ -54,7 +54,7 @@ The game is projected onto the vehicle windshield, integrating real-world drivin
 
 1. **Clone this repository:**
    ```bash
-   git clone https://github.com/tgcntemp/LaneRunner.git
+   git clone <repository_url>
    cd LaneRunner
    ```
 
