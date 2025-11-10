@@ -1,6 +1,6 @@
 # LaneRunner
 
-**LaneRunner** is a Carla simulator-based game built with Pygame, designed to enhance situation awareness (SA) in Level 3 automated driving vehicles. This project is part of the "Natural User Interfaces - Enhancing Awareness in Autonomous Driving" study for the [User Experience M.Sc.](https://www.thi.de/en/computer-science/degree-programmes/user-experience-design-msc/) at [THI](https://thi.de).
+**LaneRunner** is a Carla simulator-based game built with Pygame, designed to enhance situation awareness (SA) in Level 3 automated driving vehicles.
 
 ## Table of Contents
 
