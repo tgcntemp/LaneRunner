@@ -112,7 +112,7 @@ src/
   sessions/    # Session management and logging
   utils/       # Utility functions
   views/       # Game view and rendering
-titanic_runner.py  # Starting point for the game
+lane_runner.py  # Starting point for the game
 requirements.txt
 environment.sh
 Makefile

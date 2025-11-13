@@ -1,8 +1,8 @@
 import carla
 
 # General Constants
-TITLE_WORLD = "Titanic Runner - UXDM_NUI"
-DESCRIPTION = "Titanic Runner - Carla Control Client"
+TITLE_WORLD = "LaneRunner - UXDM_NUI"
+DESCRIPTION = "LaneRunner - Carla Control Client"
 
 # Carla Constants
 # CARLA_VEHICLE = "vehicle.tesla.cybertruck"

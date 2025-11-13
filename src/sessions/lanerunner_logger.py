@@ -6,11 +6,11 @@ import logging
 import pygame
 
 # Local imports
-from src.utils.log_titanic_timestamp import log_titanic_timestamp
+from src.utils.log_lanerunner_timestamp import log_lanerunner_timestamp
 from src.core.colors import COLOR_SCARLET_RED_0, COLOR_WHITE
 
-class TitanicLogger:
-    def __init__(self, filename='session_logs/titanic_log.csv'):
+class LaneRunnerLogger:
+    def __init__(self, filename='session_logs/lanerunner_log.csv'):
         self.filename = filename
         self.fields = [
             "session_id", "date_time",
@@ -31,7 +31,7 @@ class TitanicLogger:
     def start_session(self):
         self.reset_session()
         self.session_id = str(uuid.uuid4())
-        self.date_time = log_titanic_timestamp()
+        self.date_time = log_lanerunner_timestamp()
         logging.info(f"Session started with ID: {self.session_id} at {self.date_time}")
 
     def reset_session(self):
