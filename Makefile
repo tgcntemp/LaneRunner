@@ -1,7 +1,7 @@
 TIMESTAMP = date +%Y%m%d%H%M%S
 
 run:
-	@echo "========== Running the Titanic Runner project... =========="
+	@echo "========== Running the LaneRunner project... =========="
 	@${MAKE} install
 	@${MAKE} start
 	
@@ -66,7 +66,7 @@ client:
 		. venv/bin/activate; \
 		. ./environment.sh; \
 		echo "===== CARLA_ROOT is set to $$CARLA_ROOT ====="; \
-		nohup python3.7 titanic_runner.py -r 1920x1080 -v > '"$$LOGFILE"' 2>&1 & \
+		nohup python3.7 lanerunner.py -r 1920x1080 -v > '"$$LOGFILE"' 2>&1 & \
 		sleep 20; \
 		PID=$$(pgrep -f "python3.7"); \
 		echo $$PID > .carla_client.pid; \

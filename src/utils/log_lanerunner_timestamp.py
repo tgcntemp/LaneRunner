@@ -1,6 +1,6 @@
 import datetime
 
-def log_titanic_timestamp():
+def log_lanerunner_timestamp():
     """
     Logs the current timestamp in a human-readable format with milliseconds.
     """

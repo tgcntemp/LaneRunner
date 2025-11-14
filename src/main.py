@@ -2,17 +2,17 @@
 
 """
 =========================================================
-Titanic Runner - Carla Control Client
+LaneRunner - Carla Control Client
 =========================================================
 
-Titanic Runner is a Carla simulator-based game built with Pygame, designed to enhance situation awareness (SA) in Level 3 automated driving vehicles. This project is part of the "Natural User Interfaces - Enhancing Awareness in Autonomous Driving" study for the User Experience M.Sc. at THI.
+LaneRunner is a Carla simulator-based game built with Pygame, designed to enhance situation awareness (SA) in Level 3 automated driving vehicles. This project is part of the "Natural User Interfaces - Enhancing Awareness in Autonomous Driving" study for the User Experience M.Sc. at THI.
 
-Please refer to the README.md file for more information about the Titanic Runner project.
+Please refer to the README.md file for more information about the LaneRunner project.
 
 
 =========================================================
 
-=== Titanic Runner Controls ===
+=== LaneRunner Controls ===
 
     W            : throttle
     S            : brake
@@ -62,7 +62,7 @@ def main():
         "-d", "--description",
         metavar="DESCRIPTION",
         default=DESCRIPTION,
-        help="Description of the Carla Control Client (default: Titanic Runner - Carla Control Client)"
+        help="Description of the Carla Control Client (default: LaneRunner - Carla Control Client)"
     )
 
     # General arguments
@@ -93,8 +93,8 @@ def main():
     argparser.add_argument(
         "--rolename",
         metavar="ROLENAME",
-        default="titanic-hero",
-        help="Role name for the Carla client (default: titanic-hero)"
+        default="lanerunner-hero",
+        help="Role name for the Carla client (default: lanerunner-hero)"
     )
 
     argparser.add_argument(

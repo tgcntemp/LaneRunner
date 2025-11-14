@@ -10,7 +10,7 @@ from src.core.constants import TARGET_TRAFFIC_LIGHT_ID
 from src.data.game_state import GameState
 from src.utils.exit_game import exit_game
 from src.core.avatar_direction import AvatarDirection
-from src.utils.log_titanic_timestamp import log_titanic_timestamp
+from src.utils.log_lanerunner_timestamp import log_lanerunner_timestamp
 
 # Import PyGame constants
 try:
@@ -47,13 +47,13 @@ except ImportError:
     raise RuntimeError('cannot import pygame, make sure pygame package is installed')
 
 class InputControl():
-    def __init__(self, name, world, autopilot_enabled, titanic_logger):
+    def __init__(self, name, world, autopilot_enabled, lanerunner_logger):
         """Initialize the InputControl with a name."""
         self.name = name
         self._autopilot_enabled = autopilot_enabled
         self.world = world
         self.game_manager = None
-        self.titanic_logger = titanic_logger
+        self.lanerunner_logger = lanerunner_logger
 
         if isinstance(self.world.player, carla.Vehicle):
             self._control = carla.VehicleControl()
@@ -139,9 +139,9 @@ class InputControl():
                         # self.on_scroll_down(hero_wp, self.game_manager.avatar)
                         pass
                     elif event.key == K_t:
-                        self.titanic_logger.start_session()
+                        self.lanerunner_logger.start_session()
                     elif event.key == K_y:
-                        self.titanic_logger.save_session()
+                        self.lanerunner_logger.save_session()
                     elif event.key == K_u:
                         # TODO: - ADD LOGIC TO REMOVE THE VEHICLES IN THAT AREA!!!!
                         # TODO: - Add logic for respawn hero vehicle and reset game
@@ -152,7 +152,7 @@ class InputControl():
                         self.game_manager.game_state = GameState.MANUAL_DRIVING
                     elif event.key == K_z:
                         self.game_manager.request_takeover()
-                        self.titanic_logger.add_value(tor_time=log_titanic_timestamp())
+                        self.lanerunner_logger.add_value(tor_time=log_lanerunner_timestamp())
                         self._takeover_pending = True
                         logging.debug('Take over initialization triggered')
                     elif event.key == K_x:
@@ -165,7 +165,7 @@ class InputControl():
                         # self.world.player.set_autopilot(self._autopilot_enabled)
                         # self.game_manager.game_state = GameState.MANUAL_DRIVING
                         # if self.game_manager.has_gamified_active:
-                        #     self.titanic_logger.add_value(takeover_time=log_titanic_timestamp())
+                        #     self.lanerunner_logger.add_value(takeover_time=log_lanerunner_timestamp())
                     elif event.key == K_c:
                         logging.debug('Traffic light control triggered to go RED')
                         for light in self.world.traffic_lights:
@@ -301,7 +301,7 @@ class InputControl():
         if self._takeover_pending and (
             keys[K_w] or keys[K_a] or keys[K_d] or keys[K_s] or keys[K_SPACE]
         ):
-            self.titanic_logger.add_value(takeover_time=log_titanic_timestamp())
+            self.lanerunner_logger.add_value(takeover_time=log_lanerunner_timestamp())
             self._takeover_pending = False  # Prevent multiple logs
             logging.info("Takeover time logged from manual input.")
             # Start stability collection
@@ -314,7 +314,7 @@ class InputControl():
             elapsed = (now - self._stab_start_time) / 1000.0  # seconds
             self._stab_steer_values.append(self._control.steer)
             if elapsed >= 3.0:
-                self.titanic_logger.add_value(
+                self.lanerunner_logger.add_value(
                     stab_start=self._stab_start_time,
                     stab_end=now,
                     steer_values=self._stab_steer_values
@@ -360,7 +360,7 @@ class InputControl():
 
         # if self.game_manager.has_gamified_active:
         if self._takeover_pending and manual_input:
-            self.titanic_logger.add_value(takeover_time=log_titanic_timestamp())
+            self.lanerunner_logger.add_value(takeover_time=log_lanerunner_timestamp())
             self._takeover_pending = False
             logging.info("Takeover time logged from wheel input.")
             # Start stability collection
@@ -373,7 +373,7 @@ class InputControl():
             elapsed = (now - self._stab_start_time) / 1000.0  # seconds
             self._stab_steer_values.append(self._control.steer)
             if elapsed >= 3.0:
-                self.titanic_logger.add_value(
+                self.lanerunner_logger.add_value(
                     stab_start=self._stab_start_time,
                     stab_end=now,
                     steer_values=self._stab_steer_values

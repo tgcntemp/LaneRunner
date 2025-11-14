@@ -14,17 +14,17 @@ from src.engine.sensor.input_control import InputControl
 from src.engine.world import World
 from src.data.sound_mixer import SoundMixer
 from src.data.sounds import Sounds
-from src.sessions.titanic_logger import TitanicLogger
+from src.sessions.lanerunner_logger import LaneRunnerLogger
 
 def game_loop(args):
     """
-    Main game loop for the Titanic Runner.
+    Main game loop for the LaneRunner.
     This function will be called repeatedly to update the game state.
     """
     logging.debug("Game loop started with arguments: %s", args)
 
     world = None
-    titanic_logger = TitanicLogger()
+    lanerunner_logger = LaneRunnerLogger()
 
     try:
         # Here you would implement the main game logic
@@ -75,7 +75,7 @@ def game_loop(args):
             font = pygame.font.Font(None, font_size)
 
         text_surface = font.render(
-            "Welcome to Titanic Runner!", True, COLOR_AQUAMARINE
+            "Welcome to LaneRunner!", True, COLOR_AQUAMARINE
         )
         display.blit(text_surface, text_surface.get_rect(center=(args.width // 2, args.height // 2)))
         pygame.display.flip()
@@ -103,7 +103,7 @@ def game_loop(args):
         # Initialize the InputControl and World
         world = World(client, carla_world, args)
         game_view = GameView(args)
-        input_control = InputControl(TITLE_WORLD, world, args.autopilot, titanic_logger)
+        input_control = InputControl(TITLE_WORLD, world, args.autopilot, lanerunner_logger)
 
         game_manager = GameManager()
 
@@ -139,7 +139,7 @@ def game_loop(args):
             
             # Render all modules
             world.render(display)
-            titanic_logger.render_recording_status(display)
+            lanerunner_logger.render_recording_status(display)
 
             # Clear overlay before drawing
             overlay_surface.fill((0, 0, 0, 0))  # Transparent fill

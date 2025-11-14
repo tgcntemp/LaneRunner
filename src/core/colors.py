@@ -45,7 +45,7 @@ COLOR_SHOULDER_TRANSPARENT = pygame.Color(46, 52, 54, 64)   # 25% opacity
 COLOR_SIDEWALK_TRANSPARENT = pygame.Color(136, 138, 133, 64) # 25% opacity
 COLOR_ROAD_TRANSPARENT = pygame.Color(46, 52, 54, 64)       # 25% opacity
 
-# --------- TITANIC COLOR SCHEME ---------
+# --------- LaneRunner COLOR SCHEME ---------
 COLOR_AQUAMARINE = pygame.Color(23, 236, 178)
 COLOR_DUKEBLUE = pygame.Color(53, 6, 160)
 COLOR_RICHBLACK = pygame.Color(8, 1, 25)
